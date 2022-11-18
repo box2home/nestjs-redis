@@ -51,14 +51,16 @@ export class RedisCoreModule implements OnModuleDestroy {
   }
 
   onModuleDestroy() {
-    const closeConnection = ({ clients, defaultKey }) => (options) => {
-      const name = options.name || defaultKey;
-      const client = clients.get(name);
+    const closeConnection =
+      ({ clients, defaultKey }) =>
+      (options) => {
+        const name = options.name || defaultKey;
+        const client = clients.get(name);
 
-      if (client && !options.keepAlive) {
-        client.disconnect();
-      }
-    };
+        if (client && !options.keepAlive) {
+          client.disconnect();
+        }
+      };
 
     const closeClientConnection = closeConnection(this.redisClient);
 

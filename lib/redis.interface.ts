@@ -7,7 +7,8 @@ export interface RedisModuleOptions extends RedisOptions {
   onClientReady?(client: Redis): void;
 }
 
-export interface RedisModuleAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
+export interface RedisModuleAsyncOptions
+  extends Pick<ModuleMetadata, 'imports'> {
   useFactory?: (
     ...args: any[]
   ) =>
